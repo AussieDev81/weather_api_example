@@ -172,24 +172,18 @@ public class WeatherFrame extends javax.swing.JFrame {
      * Takes a city name comprising of one or more words and returns it with each word capitalized. This is simply for cosmetics.
      * @param cityName The name of the city
      * @return The name with each word being capitalized
-     */
+     */ 
     private String capitalizeCityName(String cityName){
         if (cityName == null || cityName.isEmpty()) return cityName;
-        
-        StringBuilder result = new StringBuilder();
-        boolean capitalizeNext = true;
-        
-        for (char c : cityName.toCharArray()) {
-            if (Character.isWhitespace(c)) {
-                capitalizeNext = true;
-            } else if (capitalizeNext) {
-                result.append(Character.toTitleCase(c));
-                capitalizeNext = false;
-            } else {
-                result.append(c);
+
+        String[] words = cityName.split(" ");
+        for(int i = 0; i < words.length; i++){
+            String word = words[i];
+            if (!word.isEmpty()) {
+                words[i] = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
             }
         }
-        return result.toString();
+        return String.join(" ", words);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
