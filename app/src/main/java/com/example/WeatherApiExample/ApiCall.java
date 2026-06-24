@@ -44,7 +44,7 @@ public class ApiCall {
     /**
      * Gets the longitude and latitude for a location based on the location name
      * @param locationName The location name
-     * @return The longitude and latitude for the location in a {@link Map}. For example: {@code {"lat": 10.73, "lon":59.91}}
+     * @return A {@link Map} containing the latitude and longitude value pairs
      */
     public Map<String, Double> getCoordinatesByLocationName(String locationName) {
         // Encode the city name to handle spaces or special characters safely
@@ -77,9 +77,9 @@ public class ApiCall {
      * Gets the weather data for a location by a given set of coordinates
      * @param lat The latitude
      * @param lon The longitude
-     * @return The current temperature
+     * @return A {@link Map<String, Object>} where "cityName" equals the city name, and "temp" equals the current temperature at that city
      */
-    public Double getWeatherData(double lat, double lon) {
+    public Map<String, Object> getWeatherData(double lat, double lon) {
         // Construct the OpenWeatherMap API URL
         String url = "https://api.openweathermap.org/data/2.5/weather?lat="
                 + lat + "&lon=" + lon + "&appid=" + API_KEY + "&units=metric";
@@ -104,8 +104,10 @@ public class ApiCall {
             );
             logger.log(Level.INFO, "WeatherResult: {0}", weatherResult);
             
-            // Return the temperature value
-            return weatherResult.getTemperature();
+            Map<String, Object> map = new HashMap<>();
+            map.put("cityName", weatherResult.getCityName());
+            map.put("temp", weatherResult.getTemperature());
+            return map;
         }
         return null;
     }
