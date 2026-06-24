@@ -36,58 +36,173 @@ public class WeatherFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         mainPanel = new javax.swing.JPanel();
+        searchByCityPanel = new javax.swing.JPanel();
+        cityNameInput = new javax.swing.JTextField();
+        cityNameLabel = new javax.swing.JLabel();
+        searchByCityNameCheckbox = new javax.swing.JCheckBox();
+        searchByCoordinatesPanel = new javax.swing.JPanel();
+        latitudeLabel = new javax.swing.JLabel();
+        latitudeInput = new javax.swing.JTextField();
+        longitudeLabel = new javax.swing.JLabel();
+        longitudeInput = new javax.swing.JTextField();
+        searchByCoordinatesCheckbox = new javax.swing.JCheckBox();
+        showTempBtn = new javax.swing.JButton();
         weatherResultLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        cityInput = new javax.swing.JTextField();
-        showTempBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        weatherResultLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        weatherResultLabel.setText("Enter a city to view the current temperature");
+        searchByCityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel1.setText("City:");
+        cityNameLabel.setText("City Name:");
 
-        cityInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                cityInputKeyReleased(evt);
-            }
-        });
+        buttonGroup1.add(searchByCityNameCheckbox);
+        searchByCityNameCheckbox.setSelected(true);
+        searchByCityNameCheckbox.setText("Search by city name");
+        searchByCityNameCheckbox.addActionListener(this::searchByCityNameCheckboxActionPerformed);
+
+        javax.swing.GroupLayout searchByCityPanelLayout = new javax.swing.GroupLayout(searchByCityPanel);
+        searchByCityPanel.setLayout(searchByCityPanelLayout);
+        searchByCityPanelLayout.setHorizontalGroup(
+            searchByCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchByCityPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchByCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(searchByCityPanelLayout.createSequentialGroup()
+                        .addComponent(cityNameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cityNameInput))
+                    .addGroup(searchByCityPanelLayout.createSequentialGroup()
+                        .addComponent(searchByCityNameCheckbox)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        searchByCityPanelLayout.setVerticalGroup(
+            searchByCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchByCityPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(searchByCityNameCheckbox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(searchByCityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cityNameLabel)
+                    .addComponent(cityNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        searchByCoordinatesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        latitudeLabel.setText("Latitude:");
+
+        latitudeInput.setEnabled(false);
+
+        longitudeLabel.setText("Longitude:");
+
+        longitudeInput.setEnabled(false);
+
+        buttonGroup1.add(searchByCoordinatesCheckbox);
+        searchByCoordinatesCheckbox.setText("Search by coordinates (decimal degrees)");
+        searchByCoordinatesCheckbox.addActionListener(this::searchByCoordinatesCheckboxActionPerformed);
+
+        javax.swing.GroupLayout searchByCoordinatesPanelLayout = new javax.swing.GroupLayout(searchByCoordinatesPanel);
+        searchByCoordinatesPanel.setLayout(searchByCoordinatesPanelLayout);
+        searchByCoordinatesPanelLayout.setHorizontalGroup(
+            searchByCoordinatesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchByCoordinatesPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchByCoordinatesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(searchByCoordinatesPanelLayout.createSequentialGroup()
+                        .addComponent(latitudeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(latitudeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(longitudeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(longitudeInput, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
+                    .addGroup(searchByCoordinatesPanelLayout.createSequentialGroup()
+                        .addComponent(searchByCoordinatesCheckbox)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        searchByCoordinatesPanelLayout.setVerticalGroup(
+            searchByCoordinatesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchByCoordinatesPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(searchByCoordinatesCheckbox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(searchByCoordinatesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(longitudeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(latitudeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(longitudeLabel)
+                    .addComponent(latitudeLabel))
+                .addContainerGap())
+        );
 
         showTempBtn.setText("Show Temperature");
+        showTempBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         showTempBtn.addActionListener(this::showTempBtnActionPerformed);
+
+        weatherResultLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        weatherResultLabel.setText("Enter a city name or coordinates to view the current temperature");
+
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("World Wide Temperature Search");
+
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 13)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Find the current temperature of any location in seconds!");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(cityInput, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(showTempBtn)))
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(weatherResultLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(245, 245, 245)
+                        .addComponent(showTempBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(246, 246, 246)
+                        .addComponent(filler1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(searchByCoordinatesPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(searchByCityPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(weatherResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cityInput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(showTempBtn))
-                .addGap(50, 50, 50)
-                .addComponent(weatherResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchByCityPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(searchByCoordinatesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(showTempBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(weatherResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         weatherResultLabel.getAccessibleContext().setAccessibleName("weatherResultLabel");
@@ -96,14 +211,16 @@ public class WeatherFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(425, 337));
+        setSize(new java.awt.Dimension(672, 503));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -112,58 +229,125 @@ public class WeatherFrame extends javax.swing.JFrame {
      * @param evt The {@link KeyEvent}
      */
     private void showTempBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showTempBtnActionPerformed
-        showTemp();
+        if(searchByCityNameCheckbox.isSelected()){
+            String cityName = capitalizeCityName(cityNameInput.getText().trim());
+            showTempByLocationName(cityName);
+        } else {
+            try {
+                double lat = Double.parseDouble(latitudeInput.getText());
+                double lon = Double.parseDouble(longitudeInput.getText());
+                showTempByCoordinates(lat, lon);
+            } catch (NumberFormatException e){
+                logger.log(Level.WARNING, e.getMessage());
+                // Change the font color and show an error message
+                weatherResultLabel.setForeground(new java.awt.Color(255, 102, 102));
+                weatherResultLabel.setText("Latitidue and Longitude must be numerical values, please check the values and try again");
+            }
+            
+        }
     }//GEN-LAST:event_showTempBtnActionPerformed
 
-    /**
-     * Fetch the temperature by the user pressing enter
-     * @param evt The {@link KeyEvent}
-     */
-    private void cityInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityInputKeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            this.showTemp();
-        }
-    }//GEN-LAST:event_cityInputKeyReleased
+    private void searchByCityNameCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByCityNameCheckboxActionPerformed
+        cityNameInput.setEnabled(true);
+        latitudeInput.setText("");
+        latitudeInput.setEnabled(false);
+        longitudeInput.setText("");
+        longitudeInput.setEnabled(false);
+        cityNameInput.requestFocus();
+    }//GEN-LAST:event_searchByCityNameCheckboxActionPerformed
+
+    private void searchByCoordinatesCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByCoordinatesCheckboxActionPerformed
+        cityNameInput.setText("");
+        cityNameInput.setEnabled(false);
+        latitudeInput.setEnabled(true);
+        longitudeInput.setEnabled(true);
+        latitudeInput.requestFocus();
+    }//GEN-LAST:event_searchByCoordinatesCheckboxActionPerformed
 
     /**
      * This method performs the following tasks:
      * 
-     * 1. Gets the city name form the user.
+     * 1. Gets the location name form the user.
      * 2. Queries the OpenWeatherMap geocode API for the city name and gets the coordinates 
      *    for that city in response (or shows an error if that city cannot be found).
      * 3. Queries the OpenWeatherMap weather API with the city coordinates.
      * 4. Displays the current temperature at the target city.
      */
-    private void showTemp(){
+    private void showTempByLocationName(String locationName){
         // Ensure the label text is normal color
         weatherResultLabel.setForeground(new java.awt.Color(60,63,65));
         
-        // Get the city name from cityInput
-        String targetCity = capitalizeCityName(cityInput.getText().trim());
-        
         // Show loading text
-        weatherResultLabel.setText(String.format(WEATHER_RESULT_LOADING_TEXT, targetCity));
+        weatherResultLabel.setText(String.format(WEATHER_RESULT_LOADING_TEXT, locationName));
         
         // Perform API call in a new thread to brevent the program from 'hanging'
         new Thread(() -> {
-            logger.log(Level.INFO, "Fetching weather for {0}", targetCity);
+            logger.log(Level.INFO, "Fetching weather for {0}", locationName);
             
             //Call the weather API and get the coordinates for the given city name
             ApiCall apiCall = new ApiCall();
             try {
-                Map<String, Double> coords = apiCall.getCoordinatesByLocationName(targetCity);
-                
+                Map<String, Double> coords = apiCall.getCoordinatesByLocationName(locationName);
+                double lat = coords.get("lat");
+                double lon = coords.get("lon");
                 // Call the weather API to get the weather for those coordinates
-                Double temp = apiCall.getWeatherData(coords.get("lat"), coords.get("lon"));
+                Map<String, Object> responseMap= apiCall.getWeatherData(lat, lon);
+                String cityName = (String) responseMap.get("cityName");
+                double temp = (double) responseMap.get("temp");
                 
                 // Set the weather result label text to show the current temperature for the given city
-                String labelText = String.format(WEATHER_RESULT_TEXT, targetCity, temp);
+                String labelText = String.format(WEATHER_RESULT_TEXT, cityName + " (lat: "+ lat + ", lon: "+ lon +")", temp);
                 weatherResultLabel.setText(labelText);
             } catch (CityNotFoundException e){
                 logger.log(Level.WARNING, e.getMessage());
                 // Change the font color and show an error message
                 weatherResultLabel.setForeground(new java.awt.Color(255, 102, 102));
                 weatherResultLabel.setText(e.getMessage());
+            }
+        }).start();
+    }
+    
+    /**
+     * This method performs the following tasks:
+     * 
+     * 1. Gets the location coordinates form the user.
+     * 2. Queries the OpenWeatherMap weather API with the location coordinates.
+     * 4. Displays the current temperature at the target location, showing both the city name and coordinates.
+     */
+    private void showTempByCoordinates(double lat, double lon) {
+        // Ensure the label text is normal color
+        weatherResultLabel.setForeground(new java.awt.Color(60,63,65));
+        
+        // Show loading text
+        weatherResultLabel.setText(String.format(WEATHER_RESULT_LOADING_TEXT, String.format("lat(%f) lon(%f)", lat, lon)));
+        
+        // Perform API call in a new thread to brevent the program from 'hanging'
+        new Thread(() -> {
+            logger.log(Level.INFO, "Fetching weather for lat:"+lat+" & lon:"+lon);
+            
+            //Call the weather API and get the coordinates for the given coordinates
+            ApiCall apiCall = new ApiCall();
+            try {
+                
+                // Call the weather API to get the weather for the given coordinates
+                Map<String, Object> responseMap = apiCall.getWeatherData(lat, lon);
+                String cityName = (String) responseMap.get("cityName");
+                double temp = (double) responseMap.get("temp");
+                
+                // Set the weather result label text to show the current temperature for the given city
+                String labelText = String.format(WEATHER_RESULT_TEXT, cityName + " (lat: "+ lat + ", lon: "+ lon +")", temp);
+                weatherResultLabel.setText(labelText);
+                
+            } catch (CityNotFoundException e){
+                logger.log(Level.WARNING, e.getMessage());
+                // Change the font color and show an error message
+                weatherResultLabel.setForeground(new java.awt.Color(255, 102, 102));
+                weatherResultLabel.setText(e.getMessage());
+            } catch (NullPointerException e){
+                logger.log(Level.WARNING, e.getMessage());
+                // Change the font color and show an error message
+                weatherResultLabel.setForeground(new java.awt.Color(255, 102, 102));
+                weatherResultLabel.setText("Invalid latitiude or longitude, please check the coordinates and try again");
             }
         }).start();
     }
@@ -187,9 +371,21 @@ public class WeatherFrame extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cityInput;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField cityNameInput;
+    private javax.swing.JLabel cityNameLabel;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField latitudeInput;
+    private javax.swing.JLabel latitudeLabel;
+    private javax.swing.JTextField longitudeInput;
+    private javax.swing.JLabel longitudeLabel;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JCheckBox searchByCityNameCheckbox;
+    private javax.swing.JPanel searchByCityPanel;
+    private javax.swing.JCheckBox searchByCoordinatesCheckbox;
+    private javax.swing.JPanel searchByCoordinatesPanel;
     private javax.swing.JButton showTempBtn;
     private javax.swing.JLabel weatherResultLabel;
     // End of variables declaration//GEN-END:variables
