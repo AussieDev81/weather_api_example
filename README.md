@@ -2,6 +2,8 @@
 
 This is a simple Java application that demonstrates fetching weather information using the [OpenWeatherMap](https://api.openweathermap.org) API.
 
+https://github.com/user-attachments/assets/620c16fd-7388-4b5b-9147-2706355acd63
+
 ## Getting started
 To create you own API key and use the free endpoints, visit https://api.openweathermap.org to create an account, and register for a free API key.
 
